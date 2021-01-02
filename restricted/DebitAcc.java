@@ -13,30 +13,31 @@ public class DebitAcc extends Account {
 
 	@Override
 	BigDecimal withdraw(BigDecimal amount) throws NonSufficientFundsException {
-		balance = balance.subtract(amount);
-		if (balance.compareTo(limit) == -1) {
-			balance = balance.add(amount);
+		setBalance(getBalance().subtract(amount));
+		if (getBalance().compareTo(limit) == -1) {
+			setBalance(getBalance().add(amount));
 			throw new NonSufficientFundsException(
 					"You can't make the transaction beacause you do not have enough money \nYour balance is: "
-							+ balance);
+							+ getBalance());
 		}
 
-		if (balance.compareTo(limit) == 0) {
-			throw new NonSufficientFundsException("Your balance equals: " + balance);
+		if (getBalance().compareTo(limit) == 0) {
+			throw new NonSufficientFundsException("Your balance equals: " + getBalance());
 		}
-		if (balance.compareTo(limit) == 1) {
-			System.out.println("Your balance is: ");
+		if (getBalance().compareTo(limit) == 1) {
+			System.out.println("Your balance is: "+getBalance());
 		}
-		return balance;
+		return getBalance();
 	}
 
 	@Override
 	BigDecimal recalculatePercents(BigDecimal percent) {
-		BigDecimal value = balance.subtract(balance.multiply(percent));
-		if (balance.compareTo(BigDecimal.ZERO) == 1) {
-			return balance.subtract(balance.multiply(percent));
+		BigDecimal value = getBalance().subtract(getBalance().multiply(percent));
+		if (getBalance().compareTo(BigDecimal.ZERO) == 1) {
+			setBalance(getBalance().subtract(getBalance().multiply(percent)));
+			 return getBalance();
 		}
-		return balance;
+		return getBalance();
 
 	}
 }

@@ -12,12 +12,6 @@ import restricted.Bank;
 import restricted.CreditAcc;
 import restricted.DebitAcc;
 
-public class BankApp {
-
-	static {
-		initBanking();
-
-	}
 
 	public static void main(String[] args) {
 		Bank lloyds = new Bank("Lloyds");
@@ -47,18 +41,6 @@ public class BankApp {
 		}
 
 	}
-
-	private static void initBanking() {
-
-		Bank lloyds = new Bank("Lloyds");
-		Bank alior = new Bank("Alior");
-		Account personal = new CreditAcc("12345", new BigDecimal("-50"));
-		Account corporate = new DebitAcc("54321");
-		lloyds.registerCreditAccount(personal);
-		alior.registerDebitAccount(corporate);
-		NationalBank.registerBank(lloyds);
-		NationalBank.registerBank(alior);
-
 
 	}
 }

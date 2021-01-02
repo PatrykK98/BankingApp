@@ -17,7 +17,7 @@ public class Bank {
 		this.name = name;
 	}
 
-	public String getName() {	
+	public String getName() {
 		return name;
 	}
 
@@ -26,26 +26,41 @@ public class Bank {
 	public void registerDebitAccount(Account a) {
 		accountList.put(a.getNumber(), a);
 	}
+
 	public void registerCreditAccount(Account a) {
 		accountList.put(a.getNumber(), a);
 	}
 
-	public void topUp(String accountNumber, BigDecimal amount)throws AccountNotFoundException{
-		if(!accountList.containsKey(accountNumber)) {
+	public void topUp(String accountNumber, BigDecimal amount) throws AccountNotFoundException {
+		if (!accountList.containsKey(accountNumber)) {
 			throw new AccountNotFoundException("Account doesn't exist");
 		}
 		accountList.get(accountNumber).topUp(amount);
 	}
 
-	public BigDecimal withdraw(String accountNumber, BigDecimal amount) throws NonSufficientFundsException, ReachedCreditLimitException,AccountNotFoundException{
-		if(!accountList.containsKey(accountNumber)) {
+	public BigDecimal withdraw(String accountNumber, BigDecimal amount)
+			throws NonSufficientFundsException, ReachedCreditLimitException, AccountNotFoundException {
+		if (!accountList.containsKey(accountNumber)) {
 			throw new AccountNotFoundException("Account doesn't exist");
 		}
 		return accountList.get(accountNumber).withdraw(amount);
-		
+
 	}
-	public BigDecimal recalculatePercents(String accountNumber, BigDecimal percents)throws AccountNotFoundException {
-		if(!accountList.containsKey(accountNumber)) {
+
+	public void transfer(String sourceAccount, BigDecimal amount, String targetAccount, Bank bank)
+			throws NonSufficientFundsException, ReachedCreditLimitException, AccountNotFoundException {
+		if (!accountList.containsKey(sourceAccount)) {
+			throw new AccountNotFoundException("Account doesn't exist");
+
+		}
+		accountList.get(sourceAccount).withdraw(amount);
+		bank.topUp(targetAccount, amount);
+		System.out.println(bank.toString());
+
+	}
+
+	public BigDecimal recalculatePercents(String accountNumber, BigDecimal percents) throws AccountNotFoundException {
+		if (!accountList.containsKey(accountNumber)) {
 			throw new AccountNotFoundException("Account doesn't exist");
 		}
 		return accountList.get(accountNumber).recalculatePercents(percents);

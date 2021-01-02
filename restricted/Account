@@ -8,14 +8,14 @@ import ExceptionClasses.ReachedCreditLimitException;
 
 public abstract class Account {
 	private String number;
-	protected BigDecimal balance = BigDecimal.ZERO;
+	private BigDecimal balance = BigDecimal.ZERO;
 
 	Account(String number) {
 		this.number = number;
 	}
 
 	void topUp(BigDecimal amount) {
-		balance = balance.add(amount);
+		balance = getBalance().add(amount);
 	}
 
 	abstract BigDecimal withdraw(BigDecimal amount) throws NonSufficientFundsException, ReachedCreditLimitException;
@@ -28,6 +28,10 @@ public abstract class Account {
 
 	BigDecimal getBalance() {
 		return balance;
+	}
+
+	public void setBalance(BigDecimal balance) {
+		this.balance = balance;
 	}
 
 	@Override

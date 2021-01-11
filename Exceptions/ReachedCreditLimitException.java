@@ -1,4 +1,4 @@
-package ExceptionClasses;
+package Exceptions;
 
 public class ReachedCreditLimitException extends Exception {
 

@@ -2,7 +2,7 @@ package restricted;
 
 import java.math.BigDecimal;
 
-import ExceptionClasses.NonSufficientFundsException;
+import Exceptions.NonSufficientFundsException;
 
 public class DebitAcc extends Account {
 	private BigDecimal limit = BigDecimal.ZERO;

@@ -6,8 +6,8 @@ import java.util.Map;
 
 import javax.security.auth.login.AccountNotFoundException;
 
-import ExceptionClasses.NonSufficientFundsException;
-import ExceptionClasses.ReachedCreditLimitException;
+import Exceptions.NonSufficientFundsException;
+import Exceptions.ReachedCreditLimitException;
 
 public class Bank {
 	private String name;

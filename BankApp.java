@@ -1,18 +1,16 @@
-package Banks;
-
 import java.math.BigDecimal;
 
-import javax.security.auth.login.AccountNotFoundException;
-
-import ExceptionClasses.BankNotFoundException;
-import ExceptionClasses.NonSufficientFundsException;
-import ExceptionClasses.ReachedCreditLimitException;
+import Exceptions.BankNotFoundException;
+import Exceptions.NonSufficientFundsException;
+import Exceptions.ReachedCreditLimitException;
 import restricted.Account;
 import restricted.Bank;
 import restricted.CreditAcc;
 import restricted.DebitAcc;
 
+import javax.security.auth.login.AccountNotFoundException;
 
+public class BankApp {
 	public static void main(String[] args) {
 		Bank lloyds = new Bank("Lloyds");
 		Bank alior = new Bank("Alior");
@@ -43,4 +41,4 @@ import restricted.DebitAcc;
 	}
 
 	}
-}
+

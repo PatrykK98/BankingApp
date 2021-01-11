@@ -1,9 +1,7 @@
-package Banks;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import ExceptionClasses.BankNotFoundException;
+import Exceptions.BankNotFoundException;
 import restricted.Bank;
 
 public class NationalBank {

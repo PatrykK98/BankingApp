@@ -2,7 +2,7 @@ package restricted;
 
 import java.math.BigDecimal;
 
-import ExceptionClasses.ReachedCreditLimitException;
+import Exceptions.ReachedCreditLimitException;
 
 public class CreditAcc extends Account {
 	BigDecimal limit;

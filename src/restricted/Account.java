@@ -1,10 +1,10 @@
 
 package restricted;
 
-import java.math.BigDecimal;
-
 import ExceptionClasses.NonSufficientFundsException;
 import ExceptionClasses.ReachedCreditLimitException;
+
+import java.math.BigDecimal;
 
 public abstract class Account {
 	private String number;

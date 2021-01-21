@@ -1,8 +1,8 @@
 package restricted;
 
-import java.math.BigDecimal;
-
 import ExceptionClasses.ReachedCreditLimitException;
+
+import java.math.BigDecimal;
 
 public class CreditAcc extends Account {
 	BigDecimal limit;
@@ -19,7 +19,7 @@ public class CreditAcc extends Account {
 		}
 		if (getBalance().compareTo(limit) == -1){
 			setBalance(getBalance().add(amount));
-			throw new ReachedCreditLimitException("Can't make the transaction bacause you reached the limit, which is: "+limit+"\nYour balance is: "+getBalance());
+			throw new ReachedCreditLimitException("Can't make the transaction because you reached the limit");
 		}
 		if (getBalance().compareTo(limit) == 1) {
 			System.out.println("Your balance is: "+getBalance());

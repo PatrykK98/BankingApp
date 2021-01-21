@@ -1,8 +1,8 @@
 package restricted;
 
-import java.math.BigDecimal;
-
 import ExceptionClasses.NonSufficientFundsException;
+
+import java.math.BigDecimal;
 
 public class DebitAcc extends Account {
 	private BigDecimal limit = BigDecimal.ZERO;
@@ -17,8 +17,7 @@ public class DebitAcc extends Account {
 		if (getBalance().compareTo(limit) == -1) {
 			setBalance(getBalance().add(amount));
 			throw new NonSufficientFundsException(
-					"You can't make the transaction beacause you do not have enough money \nYour balance is: "
-							+ getBalance());
+					"You can't make the transaction because you do not have enough money.");
 		}
 
 		if (getBalance().compareTo(limit) == 0) {
@@ -38,6 +37,5 @@ public class DebitAcc extends Account {
 			 return getBalance();
 		}
 		return getBalance();
-
 	}
 }
